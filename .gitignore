@@ -1,1 +1,7 @@
 src/main.exe
+*.vcxproj.*
+*.vcxproj
+CMakeFiles
+build
+*.cmake
+CMakeCache.txt

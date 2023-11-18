@@ -2,6 +2,7 @@
 set(SOURCE_FILES 
     brut.cpp
     a_star.cpp
+    io.cpp
     # Dodaj pozostałe pliki .cpp, jeśli istnieją
 )
 

@@ -1,6 +1,6 @@
-#include "include/brut.h"
+#include "brut.h"
 
-std::pair<std::vector<int>, int> brut(std::vector<std::vector<std::pair<int,int> > >) {
+std::pair<std::vector<int>, int> brut(std::map<int, std::vector<std::pair<int,int> > > graph) {
     std::vector<int> path;
     int cost = 0;
 

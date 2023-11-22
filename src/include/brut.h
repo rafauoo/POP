@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <limits>
 
 /// @brief brut algorith for path finding in graph
 /// @param graph map of connections from that nodes (pair: node, weight)

@@ -1,8 +1,9 @@
-#include "a_star.h"
+#include "./include/a_star.h"
 #include <queue>
 #include <algorithm>
 #include <limits>
 #include <cmath>
+
 struct Node {
     int id;
     int costFromStart; // Koszt dotarcia do tego wierzchołka z punktu startowego
@@ -66,4 +67,3 @@ std::pair<std::vector<int>, int> a_star(std::map<int, std::vector<std::pair<int,
 
     return std::make_pair(path, -1);
 }
-

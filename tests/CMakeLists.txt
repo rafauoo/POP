@@ -2,6 +2,8 @@
 set(TEST_FILES 
     test_example_1.cpp
     test_example_2.cpp
+    test_example_3.cpp
+    test_example_4.cpp
     # Dodaj pozostałe pliki .cpp testów, jeśli istnieją
 )
 

@@ -1,9 +1,10 @@
-#include "brut.h"
+#include "./include/brut.h"
 #include <map>
 #include <vector>
 #include <climits>
 #include <functional>
 #include <algorithm>
+#include "io.cpp"
 
 std::pair<std::vector<int>, int> brut(
     std::map<int, std::vector<std::pair<int, int>>> graph,

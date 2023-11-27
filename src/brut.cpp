@@ -49,6 +49,5 @@ std::pair<std::vector<int>, int> brut(
 
     // Start DFS from the source node
     dfs(nodeFrom);
-
     return std::make_pair(bestPath, bestCost);
 }

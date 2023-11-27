@@ -20,8 +20,9 @@ struct Node {
     }
 };
 
-int heuristic(int nodeFrom, int nodeTo) {
-    return nodeTo - nodeFrom;
+int heuristic(int edgeWeight, int costFromStart) {
+    //return nodeTo - nodeFrom + edgeWeight*20;
+    return edgeWeight + costFromStart;
 }
 
 std::pair<std::vector<int>, int> a_star(std::map<int, std::vector<std::pair<int, int>>> graph, int nodeFrom, int nodeTo) {
@@ -32,7 +33,7 @@ std::pair<std::vector<int>, int> a_star(std::map<int, std::vector<std::pair<int,
     std::map<int, int> costFromStart;
     std::map<int, int> cameFrom;
 
-    openSet.push(Node(nodeFrom, 0, heuristic(nodeFrom, nodeTo)));
+    openSet.push(Node(nodeFrom, 0, heuristic(0, 0))); // Początkowy koszt to 0
     costFromStart[nodeFrom] = 0;
 
     while (!openSet.empty()) {
@@ -51,14 +52,15 @@ std::pair<std::vector<int>, int> a_star(std::map<int, std::vector<std::pair<int,
             std::reverse(path.begin(), path.end());
             return std::make_pair(path, costFromStart[nodeTo]);
         }
-        std::vector<std::pair<int,int> > neighbours = graph[current.id];
-        for (std::pair<int,int> neighbor : neighbours) {
+        
+        std::vector<std::pair<int, int>> neighbours = graph[current.id];
+        for (std::pair<int, int> neighbor : neighbours) {
             int newCostFromStart = current.costFromStart + neighbor.second;
 
             if (!costFromStart.count(neighbor.first) || newCostFromStart < costFromStart[neighbor.first]) {
                 cameFrom[neighbor.first] = current.id;
                 costFromStart[neighbor.first] = newCostFromStart;
-                int estimatedCostToGoal = heuristic(neighbor.first, nodeTo);
+                int estimatedCostToGoal = heuristic(neighbor.second, current.costFromStart);
 
                 openSet.push(Node(neighbor.first, newCostFromStart, estimatedCostToGoal));
             }

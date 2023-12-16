@@ -15,7 +15,7 @@ void measure_time(int n, const std::string& filename) {
     if (!outputFile.is_open()) {
         std::cerr << "Cannot open output file" << std::endl;
     }
-    std::map<int, std::vector<std::pair<int, int> > > connections = read_graph("../../examples/10/data.txt");
+    std::map<int, std::vector<std::pair<int, int> > > connections = read_graph("../../examples/8/data.txt");
 
     for (int i = 0; i < n; ++i) {
         auto start = std::chrono::high_resolution_clock::now();

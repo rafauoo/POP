@@ -58,7 +58,7 @@ def generate_graph_with_multiple_paths_and_edges(num_vertices, num_edges):
 
     return edges_data
 
-# Przykład dla 10 wierzchołków i 20 krawędzi
-edges_data = generate_graph_with_multiple_paths_and_edges(50, 300)
+# Przykład dla 50 wierzchołków i 400 krawędzi
+edges_data = generate_graph_with_multiple_paths_and_edges(50, 400)
 for edge_data in edges_data:
     print(f"{edge_data[0]} {edge_data[1]} {edge_data[2]}")

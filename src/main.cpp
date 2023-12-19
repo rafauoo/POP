@@ -4,9 +4,9 @@
 #include <iostream>
 
 int main () {
-    std::map<int, std::vector<std::pair<int, int> > > connections = read_graph("../../examples/12/data.txt");
+    std::map<int, std::vector<std::pair<int, int> > > connections = read_graph("../../examples/22/data.txt");
     //print_graph(connections);
-    std::pair<std::vector<int>, int> output = a_star(connections, 51,1);
+    std::pair<std::vector<int>, int> output = a_star(connections, 1,400);
     print_result(output);
-    // measure_time(100000, "result.txt");
+    measure_time(100000, "result.txt");
 }

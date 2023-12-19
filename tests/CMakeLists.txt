@@ -11,6 +11,7 @@ set(TEST_FILES
     test_example_10.cpp
     test_example_11.cpp
     test_example_12.cpp
+    test_example_13.cpp
 )
 
 find_package(GTest REQUIRED)

@@ -9,11 +9,11 @@
 #include "./include/io.h"
 
 void measure_time(int n, const std::string& filename) {
-    // std::ofstream outputFile;
-    // outputFile.open("./result.txt");
-    // if (!outputFile.is_open()) {
-    //     std::cerr << "Cannot open output file" << std::endl;
-    // }
+    std::ofstream outputFile;
+    outputFile.open("./result.txt");
+    if (!outputFile.is_open()) {
+        std::cerr << "Cannot open output file" << std::endl;
+    }
 
     std::map<int, std::vector<std::pair<int, int>>> connections = read_graph("../../examples/22/data.txt");
     long double totalDuration = 0;
@@ -25,10 +25,10 @@ void measure_time(int n, const std::string& filename) {
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
         totalDuration += duration.count();
-        //outputFile << duration.count() << std::endl;
+        outputFile << duration.count() << std::endl;
     }
 
-    //outputFile.close();
+    outputFile.close();
 
     if (n > 0) {
         long double averageDuration = totalDuration / n;

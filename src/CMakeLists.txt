@@ -2,6 +2,7 @@
 set(SOURCE_FILES 
     brut.cpp
     a_star.cpp
+    dijkstra.cpp
     io.cpp
     experiments.cpp
     # Dodaj pozostałe pliki .cpp, jeśli istnieją

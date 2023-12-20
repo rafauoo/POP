@@ -4,6 +4,8 @@
 #include "../src/include/io.h"
 #include "../src/include/a_star.h"
 #include "../src/include/brut.h"
+#include "../src/include/dijkstra.h"
+
 
 // A_STAR
 TEST(A_STAR, EX_3_TEST_1) {
@@ -57,6 +59,34 @@ TEST(BRUT, EX_3_TEST_3) {
     std::pair<std::vector<int>, int> expected = read_expected_output("../../examples/3/tests/result_3.txt");
     std::pair<int, int> test_data = get_test_data("../../examples/3/tests/test_3.txt");
     std::pair<std::vector<int>, int> output = brut(connections, test_data.first, test_data.second);
+    ASSERT_EQ(output.first, expected.first);
+    ASSERT_EQ(output.second, expected.second);
+}
+
+// DIJKSTRA
+TEST(DIJKSTRA, EX_3_TEST_1) {
+    std::map<int, std::vector<std::pair<int, int> > > connections = read_graph("../../examples/3/data.txt");
+    std::pair<std::vector<int>, int> expected = read_expected_output("../../examples/3/tests/result_1.txt");
+    std::pair<int, int> test_data = get_test_data("../../examples/3/tests/test_1.txt");
+    std::pair<std::vector<int>, int> output = dijkstra(connections, test_data.first, test_data.second);
+    ASSERT_EQ(output.first, expected.first);
+    ASSERT_EQ(output.second, expected.second);
+}
+
+TEST(DIJKSTRA, EX_3_TEST_2) {
+    std::map<int, std::vector<std::pair<int, int> > > connections = read_graph("../../examples/3/data.txt");
+    std::pair<std::vector<int>, int> expected = read_expected_output("../../examples/3/tests/result_2.txt");
+    std::pair<int, int> test_data = get_test_data("../../examples/3/tests/test_2.txt");
+    std::pair<std::vector<int>, int> output = dijkstra(connections, test_data.first, test_data.second);
+    ASSERT_EQ(output.first, expected.first);
+    ASSERT_EQ(output.second, expected.second);
+}
+
+TEST(DIJKSTRA, EX_3_TEST_3) {
+    std::map<int, std::vector<std::pair<int, int> > > connections = read_graph("../../examples/3/data.txt");
+    std::pair<std::vector<int>, int> expected = read_expected_output("../../examples/3/tests/result_3.txt");
+    std::pair<int, int> test_data = get_test_data("../../examples/3/tests/test_3.txt");
+    std::pair<std::vector<int>, int> output = dijkstra(connections, test_data.first, test_data.second);
     ASSERT_EQ(output.first, expected.first);
     ASSERT_EQ(output.second, expected.second);
 }

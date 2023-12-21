@@ -16,12 +16,12 @@ void measure_time(int n, const std::string& filename) {
         std::cerr << "Cannot open output file" << std::endl;
     }
 
-    std::map<int, std::vector<std::pair<int, int>>> connections = read_graph("../../examples/18/data.txt");
+    std::map<int, std::vector<std::pair<int, int>>> connections = read_graph("../../examples/7/data.txt");
     long double totalDuration = 0;
 
     for (int i = 0; i < n; ++i) {
         auto start = std::chrono::high_resolution_clock::now();
-        dijkstra(connections, 1, 50);
+        dijkstra(connections, 1, 299);
         auto end = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 

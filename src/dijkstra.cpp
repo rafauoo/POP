@@ -7,12 +7,12 @@
 std::pair<std::vector<int>, int> dijkstra(std::map<int, std::vector<std::pair<int, int>>> graph, int nodeFrom, int nodeTo) {
     const int INF = std::numeric_limits<int>::max();
 
-    // Dodaj brakujące wierzchołki bez potomków
-    for (const auto& entry : graph) {
-        for (const auto& neighbor : entry.second) {
-            graph[neighbor.first]; // Dodaj wierzchołek, jeśli nie istnieje
-        }
-    }
+    // // Dodaj brakujące wierzchołki bez potomków
+    // for (const auto& entry : graph) {
+    //     for (const auto& neighbor : entry.second) {
+    //         graph[neighbor.first]; // Dodaj wierzchołek, jeśli nie istnieje
+    //     }
+    // }
 
     std::map<int, int> distance;
     std::map<int, std::vector<int>> optimalPaths;
@@ -28,6 +28,8 @@ std::pair<std::vector<int>, int> dijkstra(std::map<int, std::vector<std::pair<in
     while (!visited.count(nodeTo)) {
         int current_node = -1;
         int min_distance = INF;
+
+        // Find the unvisited node with the smallest distance
         for (const auto& pair : distance) {
             if (!visited.count(pair.first) && pair.second < min_distance) {
                 min_distance = pair.second;
@@ -35,12 +37,15 @@ std::pair<std::vector<int>, int> dijkstra(std::map<int, std::vector<std::pair<in
             }
         }
 
+        // If no more reachable nodes
         if (current_node == -1) {
             break;
         }
 
+        // Mark the current node as visited
         visited.insert(current_node);
 
+        // Update distances and optimal paths for neighboring nodes
         for (const auto& neighbor : graph[current_node]) {
             int neighbor_node = neighbor.first;
             int edge_weight = neighbor.second;
@@ -53,5 +58,6 @@ std::pair<std::vector<int>, int> dijkstra(std::map<int, std::vector<std::pair<in
         }
     }
 
+    // Return the optimal path and distance
     return std::make_pair(optimalPaths[nodeTo], distance[nodeTo]);
 }

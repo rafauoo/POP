@@ -32,6 +32,11 @@ void measure_time(int n, AlgorithmType alg, int source, int finish, const std::s
             a_star(connections, source, finish);
             end = std::chrono::high_resolution_clock::now();
         }
+        if (alg == AlgorithmType::BrutForce) {
+            start = std::chrono::high_resolution_clock::now();
+            brut(connections, source, finish);
+            end = std::chrono::high_resolution_clock::now();
+        }
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
         totalDuration += duration.count();

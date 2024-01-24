@@ -27,12 +27,12 @@ void find_good_test(std::map<int, std::vector<std::pair<int, int> > > connection
 }
 
 int main () {
-    std::map<int, std::vector<std::pair<int, int> > > connections = read_graph("../../examples/28/data.txt");
+    //std::map<int, std::vector<std::pair<int, int> > > connections = read_graph("../../examples/28/data.txt");
     //print_graph(connections);
 
-    //find_good_test(connections);
-    std::pair<std::vector<int>, int> output = dijkstra(connections, 3725, 6169);
-    print_result(output);
-    //measure_time(10, AlgorithmType::Dijkstra, 4803, 523, "../../examples/27/data.txt", "result.txt");
+    // find_good_test(connections);
+    // std::pair<std::vector<int>, int> output = dijkstra(connections, 3725, 6169);
+    // print_result(output);
+    measure_time(1, AlgorithmType::BrutForce, 197, 2386, "../../examples/25/data.txt", "result.txt");
 }
 

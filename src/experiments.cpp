@@ -9,20 +9,29 @@
 #include "./include/io.h"
 #include "./include/dijkstra.h"
 
-void measure_time(int n, const std::string& filename) {
+void measure_time(int n, AlgorithmType alg, int source, int finish, const std::string input, const std::string output) {
     std::ofstream outputFile;
-    outputFile.open("./result.txt");
+    outputFile.open(output);
     if (!outputFile.is_open()) {
         std::cerr << "Cannot open output file" << std::endl;
     }
 
-    std::map<int, std::vector<std::pair<int, int>>> connections = read_graph("../../examples/7/data.txt");
+    std::map<int, std::vector<std::pair<int, int>>> connections = read_graph(input);
     long double totalDuration = 0;
-
+    std::cout << "Graph initialized\n";
     for (int i = 0; i < n; ++i) {
         auto start = std::chrono::high_resolution_clock::now();
-        dijkstra(connections, 1, 299);
         auto end = std::chrono::high_resolution_clock::now();
+        if (alg == AlgorithmType::Dijkstra) {
+            start = std::chrono::high_resolution_clock::now();
+            dijkstra(connections, source, finish);
+            end = std::chrono::high_resolution_clock::now();
+        }
+        if (alg == AlgorithmType::A_Star) {
+            start = std::chrono::high_resolution_clock::now();
+            a_star(connections, source, finish);
+            end = std::chrono::high_resolution_clock::now();
+        }
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
         totalDuration += duration.count();
